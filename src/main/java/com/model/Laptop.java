@@ -4,9 +4,10 @@ package com.model;
 import javax.persistence.*;
 
 
+@Table
 @Entity
 public class Laptop {
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 

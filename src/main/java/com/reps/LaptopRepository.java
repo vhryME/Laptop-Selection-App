@@ -2,12 +2,10 @@ package com.reps;
 
 
 import com.model.Laptop;
-import org.springframework.data.repository.CrudRepository;
-
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface LaptopRepository extends CrudRepository<Laptop, Integer> {
-    List<Laptop> getAll();
-    Laptop getByCode();
+public interface LaptopRepository extends JpaRepository<Laptop, Integer> {
+    /*List<Laptop> getAll();
+    Laptop getByCode();*/
 }

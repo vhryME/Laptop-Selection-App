@@ -1,5 +1,6 @@
 package com.model;
 
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -9,16 +10,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Parser {
     private static String seacrhQuery;
 
-    public static List<Laptop> getProducts() throws IOException {
+    public static List<Laptop> getProducts() {
         seacrhQuery = "noutbuki";
 
         List<Laptop> products = new ArrayList<>();
         StringBuffer temp = null;
 
-        Document document = document= Jsoup.connect("https://5element.by/catalog/1383-" + seacrhQuery).get();
+        Document document = null;
+
+        try {
+            document = document= Jsoup.connect("https://5element.by/catalog/1383-" + seacrhQuery).get();
+        } catch (IOException e) { e.printStackTrace(); }
 
         Elements productsHTML = document.getElementsByAttributeValue("class", "spec-product js-product-item");
 
@@ -125,7 +131,7 @@ public class Parser {
             }
 
             Laptop product = new Laptop(name, code, os, screen, processor, gCard, ram, hard, cost, delivery);
-            System.out.println(product.toString());
+            //System.out.println(product.toString());
             products.add(product);
         }
 
