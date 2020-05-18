@@ -1,6 +1,7 @@
-package com.model;
+package com.parser;
 
 
+import com.model.Laptop;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -48,6 +49,7 @@ public class Parser {
             //System.out.println(data);
 
             String[] strArray = data.split(" ");
+            float fullCosts[];
 
             //Getting name
             for (int i = 0; i < 7; i++) {
@@ -136,5 +138,31 @@ public class Parser {
         }
 
         return products;
+    }
+
+    public static List<Laptop> getCheapLaptops(List<Laptop> laptops) {
+        Integer fullCost;
+        List<Laptop> cheapLaptops = null;
+
+        for(Laptop laptop : laptops) {
+            fullCost = Integer.getInteger(laptop.getCost().toString());
+
+            if(fullCost < 1000)
+                cheapLaptops.add(laptop);
+        }
+
+        return cheapLaptops;
+    }
+
+    public static List<Laptop> getPowerfullLaptops(List<Laptop> laptops) {
+        String processor;
+        List<Laptop> powerfullLaptops = null;
+
+        for (Laptop laptop : laptops) {
+            if(laptop.getProcessor().toString().equalsIgnoreCase("Intel Core i5") || laptop.getProcessor().toString().equalsIgnoreCase("AMD Ryzen 9"))
+                powerfullLaptops.add(laptop);
+        }
+
+        return powerfullLaptops;
     }
 }

@@ -24,8 +24,6 @@ public class Laptop {
     private StringBuffer delivery;
 
 
-    public Laptop() {  }
-
     public Laptop(StringBuffer name, StringBuffer code, StringBuffer os, StringBuffer screen, StringBuffer processor, StringBuffer gCard, StringBuffer ram, StringBuffer hard, StringBuffer cost, StringBuffer delivery) {
         this.name = name;
         this.code = code;
@@ -70,14 +68,6 @@ public class Laptop {
 
     public StringBuffer getDelivery() { return delivery; }
     public void setDelivery(StringBuffer delivery) { this.delivery = delivery; }
-
-
-    public static String[] getAllproperties(Laptop laptop) {
-        return new String[]{
-                laptop.getName().toString(), laptop.getCode().toString(), laptop.getOs().toString(),
-                laptop.getScreen().toString(), laptop.getProcessor().toString(), laptop.getgCard().toString(), laptop.getRam().toString(),
-                laptop.getHard().toString(), laptop.getCost().toString(), laptop.getDelivery().toString()};
-    }
 
 
     @Override
